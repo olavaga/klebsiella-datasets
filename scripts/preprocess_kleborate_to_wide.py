@@ -1,4 +1,5 @@
 import csv
+import os
 
 # Should we clean the allele variants or not?
 TRUNCATE = True
@@ -30,6 +31,9 @@ for sample in samples:
             tokens.add(clean(token))
 
 new_header = sorted(tokens - {'-'}, key=str.upper)
+
+if not os.path.exists("../clean"):
+    os.makedirs("../clean")
 
 with open("../clean/kleborate_wide_binary.csv", 'w') as fp:
     writer = csv.writer(fp)

@@ -11,6 +11,7 @@ files <- c("Klebsiella pneumoniae__kleborate.csv",
 
 for (filename in files) {
 	if (!file.exists(paste0("../raw/",filename))) {
+		dir.create("../raw/", showWarnings=FALSE)
 		download.file(paste0(pathogen.watch.endpoint,filename,".gz"),
 			      paste0("../raw/",filename,".gz"),
 			      method="wget")
