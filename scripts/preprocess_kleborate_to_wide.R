@@ -15,6 +15,9 @@ obs <- sapply(obs, \(x) gsub(" \\+[0-9][0-9][0-9]?[A-Z]$", "", x))
 # Remove asterix, hats and questionmarks all denoting distance to known alleles
 obs <- sapply(obs, \(x) gsub("[*^?]*$", "", x))
 
+# Remove .v1, .v2 etc
+obs <- sapply(obs, \(x) gsub("\\.v[1-9]$", "", x))
+
 # Create a list of all unique columns
 columns <- sort(unique(c(unlist(obs))))
 columns <- columns[columns != '-']
